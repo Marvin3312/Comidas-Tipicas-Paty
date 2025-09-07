@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Lógica para el menú móvil (hamburguesa) ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
     // --- Lógica para el filtro del menú ---
     const filterButtons = document.querySelectorAll('.filter-btn');
     const menuItems = document.querySelectorAll('.menu-item');
@@ -40,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
+                // Cierra el menú móvil si está abierto antes de desplazarse
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
