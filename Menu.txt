@@ -1,2 +1,3 @@
-COLOCA UNA SECCION DE CONTACTO DONDE ESTEN LAS REDES SOCIALES. Y HAZ UN BANNER BONITO Y NAVBAR MAS ESTETICO
+EL: 42375353 Y 42374838" , "visitanos en el local ubicado en colonia asuncion"
 
+ahora quiero que al guardar el menu como imagen coloques en la parte superior la imagen "superior menu.jpg", destaca mas la seccion de abajo del menu 

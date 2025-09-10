@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comidas Tipicas Paty</title>
+    <title>COMIDAS TIPICAS PATY</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
     tailwind.config = {
       theme: {
         extend: {
+          backgroundImage: {
+            'guatemala-textile': "url('assets/images/fondotextil.jpg')",
+          },
           colors: {
             'paty-bg': '#F2ECCE',
             'paty-primary': '#D95323',
@@ -17,17 +20,22 @@
             'paty-accent': '#7ABFB8',
             'paty-highlight': '#BF2424',
             'paty-text': '#3d2c21',
+            'paty-dark-bg': '#2d211a',
           }
         }
       }
     }
     </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
-<body class="bg-paty-bg text-paty-text font-sans">
+<body class="bg-paty-dark-bg text-white font-sans">
 
     <header class="bg-paty-secondary shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-white">Comidas Tipicas Paty</h1>
+            <div class="flex items-center">
+                <img src="assets/images/logo.jpg" alt="Logo Comidas Tipicas Paty" class="h-12 mr-4">
+                <h1 class="text-2xl font-bold text-white">COMIDAS TIPICAS PATY</h1>
+            </div>
             <!-- Botón Hamburguesa para móvil -->
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
@@ -54,75 +62,98 @@
     <main>
 
         <section id="hero" class="text-center py-20 bg-paty-primary/20">
-            <h2 class="text-5xl font-bold text-paty-primary mb-4">Sabor Auténtico y Tradicional</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-8">Donde cada platillo cuenta una historia. ¡Buen provecho!</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-paty-primary mb-4 text-white" >Sabor Auténtico y Tradicional</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-8 text-white">Donde cada platillo cuenta una historia. ¡Buen provecho!</p>
             <a href="#menu" class="bg-paty-highlight text-white font-bold py-3 px-8 rounded-full hover:bg-paty-primary transition duration-300">Ver Menú</a>
         </section>
 
         <div class="container mx-auto px-6 py-12">
-            <section id="menu">
-                <div class="flex justify-center mb-12">
-                    <button class="filter-btn bg-paty-accent text-white font-bold py-2 px-4 rounded-full mx-2 active" data-filter="all">Todos</button>
-                    <button class="filter-btn bg-gray-300 hover:bg-paty-accent text-paty-text hover:text-white font-bold py-2 px-4 rounded-full mx-2" data-filter="tipicos">Platos Típicos</button>
+            <section id="menu" class="container mx-auto px-6 py-12">
+    <div id="menu-capture-area" class="bg-guatemala-textile p-8 shadow-lg rounded-lg">
+        <div class="bg-white/80 text-paty-text p-4 sm:p-8 rounded-lg">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-paty-primary mb-6" style="font-family: 'Brush Script MT', cursive;">COMIDAS TIPICAS PATY</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center mb-6">
+                <button class="filter-btn bg-paty-accent text-white font-bold py-2 px-4 rounded-full mx-2 my-1 active" data-filter="all">Todos</button>
+                <button class="filter-btn bg-gray-300 hover:bg-paty-accent text-paty-text hover:text-white font-bold py-2 px-4 rounded-full mx-2 my-1" data-filter="antojitos">Antojitos</button>
+                <button class="filter-btn bg-gray-300 hover:bg-paty-accent text-paty-text hover:text-white font-bold py-2 px-4 rounded-full mx-2 my-1" data-filter="almuerzos">Almuerzos</button>
+            </div>
+
+            <div id="menu-list" class="space-y-4">
+                <!-- Antojitos -->
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">01. DOBLADAS DE POLLO</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold"> &nbsp; &nbsp; &nbsp; DOBLADAS AL PASTOR (CARNE ADOBADA Y QUESILLO)</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">02. TORTILLA DE HARINA DE CERDO</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">03. ENCHILADAS</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">04. PANES CON CARNE</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">05. HAMBURGUESAS DE RES</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">06. HOT DOG CON TOCINO Y CEBOLLA CARAMELIZADA</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">07. TACOS DORADOS DE PAPA (3)</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">08. TAYUYOS (CARNE, REQUESON CON LOROCO, CHICHARRON)</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q5.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold">09. LICUADOS DE FRUTAS</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
+                </div>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
+                    <span class="text-lg font-semibold"> &nbsp; &nbsp; &nbsp; LICUADOS CON LECHE</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q12.00</span>
                 </div>
 
-                <div class="menu-items grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                    <!-- Menu Item 1 -->
-                    <div class="menu-item flex bg-white rounded-lg shadow-md overflow-hidden" data-category="tipicos">
-                        <img src="images/chuchitos.jpg" alt="Chuchitos" class="w-1/3 h-auto object-cover">
-                        <div class="p-4 flex flex-col justify-center">
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h3 class="text-xl font-bold text-paty-primary">Chuchitos</h3>
-                                <p class="text-lg font-semibold text-paty-highlight">$10.00</p>
-                            </div>
-                            <p class="text-gray-600 text-sm">Deliciosos tamales pequeños de masa de maíz con un recado de tomate y relleno de carne.</p>
-                        </div>
-                    </div>
-
-                    <!-- Menu Item 2 -->
-                    <div class="menu-item flex bg-white rounded-lg shadow-md overflow-hidden" data-category="tipicos">
-                        <img src="images/empanadas.jpg" alt="Empanadas" class="w-1/3 h-auto object-cover">
-                        <div class="p-4 flex flex-col justify-center">
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h3 class="text-xl font-bold text-paty-primary">Empanadas</h3>
-                                <p class="text-lg font-semibold text-paty-highlight">$12.00</p>
-                            </div>
-                            <p class="text-gray-600 text-sm">Crujientes empanadas de masa de maíz rellenas de carne y papa, servidas con salsa y encurtido.</p>
-                        </div>
-                    </div>
-
-                    <!-- Menu Item 3 -->
-                    <div class="menu-item flex bg-white rounded-lg shadow-md overflow-hidden" data-category="tipicos">
-                        <img src="images/tacos chapines.jpg" alt="Tacos Chapines" class="w-1/3 h-auto object-cover">
-                        <div class="p-4 flex flex-col justify-center">
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h3 class="text-xl font-bold text-paty-primary">Tacos Chapines</h3>
-                                <p class="text-lg font-semibold text-paty-highlight">$15.00</p>
-                            </div>
-                            <p class="text-gray-600 text-sm">Tortillas de maíz enrolladas y fritas, rellenas de carne de res y papa, servidas con salsa y queso.</p>
-                        </div>
-                    </div>
-
-                    <!-- Menu Item 4 -->
-                    <div class="menu-item flex bg-white rounded-lg shadow-md overflow-hidden" data-category="tipicos">
-                        <img src="images/Tayuyos.jpg" alt="Tayuyos" class="w-1/3 h-auto object-cover">
-                        <div class="p-4 flex flex-col justify-center">
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h3 class="text-xl font-bold text-paty-primary">Tayuyos</h3>
-                                <p class="text-lg font-semibold text-paty-highlight">$8.00</p>
-                            </div>
-                            <p class="text-gray-600 text-sm">Pequeños tamales de masa de maíz rellenos de frijol, perfectos como acompañamiento.</p>
-                        </div>
-                    </div>
-
+                <!-- Almuerzos -->
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="almuerzos">
+                    <span class="text-lg font-semibold">COSTILLAS ASADAS</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q150.00</span>
                 </div>
-            </section>
+                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="almuerzos">
+                    <span class="text-lg font-semibold">ESPAGUETI</span>
+                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
+                </div>
+            </div>
+            <div class="text-center mt-8 pt-6 border-t-2 border-dashed border-paty-text">
+                <p style="font-weight: bold;"class="text-lg sm:text-xl mb-2">Visítanos en el local ubicado en colonia asuncion o llamanos al</p>
+                <p style="font-weight: bold;"class="font-bold text-lg sm:text-xl text-paty-secondary">42375353 Y 42374838</p>
+                <p style="font-weight: bold;"class="text-lg sm:text-xl">y te lo llevamos a tu casa</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-8">
+         <button id="save-menu-image-btn" class="bg-paty-highlight text-white font-bold py-3 px-6 rounded-full hover:bg-paty-primary transition duration-300">Guardar Menú como Imagen</button>
+    </div>
+</section>
         </div>
         
         <section id="contacto" class="bg-white py-16">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-paty-primary mb-8">Contacto y Redes Sociales</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-paty-primary mb-8">Contacto</h2>
                 <p class="text-lg max-w-2xl mx-auto mb-8">¡Síguenos en nuestras redes para no perderte ninguna de nuestras delicias y promociones!</p>
                 <div class="flex justify-center space-x-6 mb-8">
                     <a href="#" class="text-paty-secondary hover:text-paty-primary transform hover:scale-110 transition-transform duration-300">
@@ -136,8 +167,8 @@
                     </a>
                 </div>
                 <div class="text-lg text-paty-text">
-                    <p><strong>Teléfono:</strong> <a href="tel:+123456789" class="hover:underline">+1 (23) 456-789</a></p>
-                    <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad Ejemplo</p>
+                    <p><strong>Teléfono:</strong> <a href="tel:+123456789" class="hover:underline">42375353 Y 42374838</a></p>
+                    <p><strong>Dirección:</strong> Guastatoya, El Progreso, Guatemala</p>
                 </div>
             </div>
         </section>
@@ -149,6 +180,8 @@
             <p>&copy; 2025 Comidas Tipicas Paty. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="tooplate-inner-peace-scripts.js"></script>
+    <script src="styles/audio-player.js"></script>
+    <script src="styles/tooplate-inner-peace-scripts.js"></script>
+    <script src="styles/menu-features.js"></script>
 </body>
 </html>
