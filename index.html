@@ -1,187 +1,150 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMIDAS TIPICAS PATY</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          backgroundImage: {
-            'guatemala-textile': "url('assets/images/fondotextil.jpg')",
-          },
-          colors: {
-            'paty-bg': '#F2ECCE',
-            'paty-primary': '#D95323',
-            'paty-secondary': '#F28627',
-            'paty-accent': '#7ABFB8',
-            'paty-highlight': '#BF2424',
-            'paty-text': '#3d2c21',
-            'paty-dark-bg': '#2d211a',
-          }
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+          --paty-bg: #F2ECCE;
+          --paty-primary: #D95323;
+          --paty-secondary: #F28627;
+          --paty-accent: #7ABFB8;
+          --paty-highlight: #BF2424;
+          --paty-text: #3d2c21;
+          --paty-dark-bg: #2d211a;
         }
-      }
-    }
-    </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        body {
+            background-color: var(--paty-dark-bg);
+            color: white;
+        }
+        .bg-guatemala-textile {
+            background-image: url('assets/images/fondotextil.jpg');
+        }
+        .accordion-button {
+            background-color: var(--paty-secondary) !important;
+            color: white !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--paty-primary) !important;
+        }
+        .accordion-body {
+            background-color: var(--paty-bg);
+            color: var(--paty-text);
+        }
+        .list-group-item {
+            background-color: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+        }
+        .price-badge {
+            background-color: var(--paty-primary);
+            color: white;
+        }
+        #menu-capture-area {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body class="bg-paty-dark-bg text-white font-sans">
+    <audio id="background-music" loop>
+        <source src="assets/music/Marimba Maderas Chapinas - El Rey Quiche - Difosa Music.mp3" type="audio/mpeg">
+    </audio>
 
-    <header class="bg-paty-secondary shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="assets/images/logo.jpg" alt="Logo Comidas Tipicas Paty" class="h-12 mr-4">
-                <h1 class="text-2xl font-bold text-white">COMIDAS TIPICAS PATY</h1>
+    <header class="bg-paty-secondary shadow-lg sticky-top" style="background-color: var(--paty-secondary);">
+        <div class="container d-flex justify-content-between align-items-center px-4 py-3">
+            <div class="d-flex align-items-center">
+                <img src="assets/images/logo.jpg" alt="Logo Comidas Tipicas Paty" style="height: 50px;" class="me-3">
+                <h1 class="h4 mb-0 text-white">COMIDAS TIPICAS PATY</h1>
             </div>
-            <!-- Botón Hamburguesa para móvil -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-            <!-- Menú de Navegación -->
-            <nav id="main-nav" class="hidden md:flex md:items-center">
-                <a href="#hero" class="text-white hover:text-paty-bg px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                <a href="#menu" class="text-white hover:text-paty-bg px-3 py-2 rounded-md text-sm font-medium">Menú</a>
-                <a href="#contacto" class="text-white hover:text-paty-bg px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
-            </nav>
-        </div>
-        <!-- Menú desplegable para móvil -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#hero" class="block text-white hover:text-paty-bg px-4 py-2 text-sm font-medium">Inicio</a>
-            <a href="#menu" class="block text-white hover:text-paty-bg px-4 py-2 text-sm font-medium">Menú</a>
-            <a href="#contacto" class="block text-white hover:text-paty-bg px-4 py-2 text-sm font-medium">Contacto</a>
         </div>
     </header>
 
     <main>
-
-        <section id="hero" class="text-center py-20 bg-paty-primary/20">
-            <h2 class="text-4xl sm:text-5xl font-bold text-paty-primary mb-4 text-white" >Sabor Auténtico y Tradicional</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-8 text-white">Donde cada platillo cuenta una historia. ¡Buen provecho!</p>
-            <a href="#menu" class="bg-paty-highlight text-white font-bold py-3 px-8 rounded-full hover:bg-paty-primary transition duration-300">Ver Menú</a>
+        <section id="hero" class="text-center py-5" style="background-color: rgba(217, 83, 35, 0.2);">
+            <h2 class="display-4 fw-bold mb-3" style="color: var(--paty-primary);">Sabor Auténtico y Tradicional</h2>
+            <p class="lead mx-auto mb-4" style="max-width: 600px;">Donde cada platillo cuenta una historia. ¡Buen provecho!</p>
+            <a href="#menu" class="btn fw-bold py-2 px-4 rounded-pill" style="background-color: var(--paty-highlight); color: white;">Ver Menú</a>
         </section>
 
-        <div class="container mx-auto px-6 py-12">
-            <section id="menu" class="container mx-auto px-6 py-12">
-    <div id="menu-capture-area" class="bg-guatemala-textile p-8 shadow-lg rounded-lg">
-        <div class="bg-white/80 text-paty-text p-4 sm:p-8 rounded-lg">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-paty-primary mb-6" style="font-family: 'Brush Script MT', cursive;">COMIDAS TIPICAS PATY</h2>
-            
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap justify-center mb-6">
-                <button class="filter-btn bg-paty-accent text-white font-bold py-2 px-4 rounded-full mx-2 my-1 active" data-filter="all">Todos</button>
-                <button class="filter-btn bg-gray-300 hover:bg-paty-accent text-paty-text hover:text-white font-bold py-2 px-4 rounded-full mx-2 my-1" data-filter="antojitos">Antojitos</button>
-                <button class="filter-btn bg-gray-300 hover:bg-paty-accent text-paty-text hover:text-white font-bold py-2 px-4 rounded-full mx-2 my-1" data-filter="almuerzos">Almuerzos</button>
-            </div>
-
-            <div id="menu-list" class="space-y-4">
-                <!-- Antojitos -->
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">01. DOBLADAS DE POLLO</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
+        <div class="container px-4 py-5">
+            <section id="menu">
+                <div id="menu-capture-area" class="bg-guatemala-textile p-4 shadow-lg rounded">
+                    <div class="p-4 rounded" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <img src="assets/images/superior menu.jpeg" alt="Menu Superior" class="img-fluid mb-4">
+                        <h2 class="h2 fw-bold text-center mb-4" style="font-family: 'Brush Script MT', cursive; color: var(--paty-primary);">COMIDAS TIPICAS PATY</h2>
+                        
+                        <div class="accordion" id="menuAccordion">
+                            <!-- Antojitos -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingAntojitos">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAntojitos" aria-expanded="true" aria-controls="collapseAntojitos">
+                                        Antojitos
+                                    </button>
+                                </h2>
+                                <div id="collapseAntojitos" class="accordion-collapse collapse show" aria-labelledby="headingAntojitos" data-bs-parent="#menuAccordion">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">01. DOBLADAS DE POLLO <span class="badge price-badge rounded-pill">Q15.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center"> &nbsp; &nbsp; &nbsp; DOBLADAS AL PASTOR (CARNE ADOBADA Y QUESILLO) <span class="badge price-badge rounded-pill">Q20.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">02. TORTILLA DE HARINA DE CERDO <span class="badge price-badge rounded-pill">Q20.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">03. ENCHILADAS <span class="badge price-badge rounded-pill">Q10.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">04. PANES CON CARNE <span class="badge price-badge rounded-pill">Q15.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">05. HAMBURGUESAS DE RES <span class="badge price-badge rounded-pill">Q15.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">06. HOT DOG CON TOCINO Y CEBOLLA CARAMELIZADA <span class="badge price-badge rounded-pill">Q15.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">07. TACOS DORADOS DE PAPA (3) <span class="badge price-badge rounded-pill">Q10.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">08. TAYUYOS (CARNE, REQUESON CON LOROCO, CHICHARRON) <span class="badge price-badge rounded-pill">Q5.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">09. LICUADOS DE FRUTAS <span class="badge price-badge rounded-pill">Q10.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center"> &nbsp; &nbsp; &nbsp; LICUADOS CON LECHE <span class="badge price-badge rounded-pill">Q12.00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Almuerzos -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingAlmuerzos">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAlmuerzos" aria-expanded="false" aria-controls="collapseAlmuerzos">
+                                        Almuerzos
+                                    </button>
+                                </h2>
+                                <div id="collapseAlmuerzos" class="accordion-collapse collapse" aria-labelledby="headingAlmuerzos" data-bs-parent="#menuAccordion">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">COSTILLAS ASADAS <span class="badge price-badge rounded-pill">Q150.00</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">ESPAGUETI <span class="badge price-badge rounded-pill">Q20.00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4 pt-4 border-top border-2 border-dashed" style="border-color: var(--paty-text); color: black; font-weight: bold;">
+                            <p class="h5 mb-2">Visítanos en el local ubicado en colonia asuncion o llamanos al</p>
+                            <p class="h5 fw-bold" style="color: var(--paty-secondary);">42375353 Y 42374838</p>
+                            <p class="h5">y te lo llevamos a tu casa</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold"> &nbsp; &nbsp; &nbsp; DOBLADAS AL PASTOR (CARNE ADOBADA Y QUESILLO)</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
+                <div class="text-center mt-4">
+                     <button id="save-menu-image-btn" class="btn btn-lg rounded-pill" style="background-color: var(--paty-highlight); color: white;">Guardar Menú como Imagen</button>
                 </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">02. TORTILLA DE HARINA DE CERDO</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">03. ENCHILADAS</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">04. PANES CON CARNE</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">05. HAMBURGUESAS DE RES</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">06. HOT DOG CON TOCINO Y CEBOLLA CARAMELIZADA</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q15.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">07. TACOS DORADOS DE PAPA (3)</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">08. TAYUYOS (CARNE, REQUESON CON LOROCO, CHICHARRON)</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q5.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold">09. LICUADOS DE FRUTAS</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q10.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="antojitos">
-                    <span class="text-lg font-semibold"> &nbsp; &nbsp; &nbsp; LICUADOS CON LECHE</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q12.00</span>
-                </div>
-
-                <!-- Almuerzos -->
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="almuerzos">
-                    <span class="text-lg font-semibold">COSTILLAS ASADAS</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q150.00</span>
-                </div>
-                <div class="menu-item-list flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-paty-text relative" data-category="almuerzos">
-                    <span class="text-lg font-semibold">ESPAGUETI</span>
-                    <span class="font-bold text-paty-primary mt-1 sm:mt-0">Q20.00</span>
-                </div>
-            </div>
-            <div class="text-center mt-8 pt-6 border-t-2 border-dashed border-paty-text">
-                <p style="font-weight: bold;"class="text-lg sm:text-xl mb-2">Visítanos en el local ubicado en colonia asuncion o llamanos al</p>
-                <p style="font-weight: bold;"class="font-bold text-lg sm:text-xl text-paty-secondary">42375353 Y 42374838</p>
-                <p style="font-weight: bold;"class="text-lg sm:text-xl">y te lo llevamos a tu casa</p>
-            </div>
+            </section>
         </div>
-    </div>
-
-    <div class="flex justify-center mt-8">
-         <button id="save-menu-image-btn" class="bg-paty-highlight text-white font-bold py-3 px-6 rounded-full hover:bg-paty-primary transition duration-300">Guardar Menú como Imagen</button>
-    </div>
-</section>
-        </div>
-        
-        <section id="contacto" class="bg-white py-16">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl sm:text-4xl font-bold text-paty-primary mb-8">Contacto</h2>
-                <p class="text-lg max-w-2xl mx-auto mb-8">¡Síguenos en nuestras redes para no perderte ninguna de nuestras delicias y promociones!</p>
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="#" class="text-paty-secondary hover:text-paty-primary transform hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#" class="text-paty-secondary hover:text-paty-primary transform hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm6.406-11.845a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#" class="text-paty-secondary hover:text-paty-primary transform hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.885.511a1.745 1.745 0 012.61.163L6.28 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 00.178.643l2.457 2.457a.678.678 0 00.644.178l2.189-.547a1.745 1.745 0 011.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 01-7.01-4.42 18.634 18.634 0 01-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" /></svg>
-                    </a>
-                </div>
-                <div class="text-lg text-paty-text">
-                    <p><strong>Teléfono:</strong> <a href="tel:+123456789" class="hover:underline">42375353 Y 42374838</a></p>
-                    <p><strong>Dirección:</strong> Guastatoya, El Progreso, Guatemala</p>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <footer class="bg-paty-text">
-        <div class="container mx-auto px-6 py-6 text-center text-paty-bg">
+    <footer style="background-color: var(--paty-text);">
+        <div class="container text-center py-4" style="color: var(--paty-bg);">
             <p>&copy; 2025 Comidas Tipicas Paty. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="styles/audio-player.js"></script>
-    <script src="styles/tooplate-inner-peace-scripts.js"></script>
     <script src="styles/menu-features.js"></script>
 </body>
 </html>

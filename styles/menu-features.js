@@ -34,13 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveImageButton) {
         saveImageButton.addEventListener('click', () => {
             const menuToCapture = document.querySelector('#menu-capture-area');
+            
+            // Guardar estilos originales
             const originalWidth = menuToCapture.style.width;
-            menuToCapture.style.width = '1200px';
+            const originalHeight = menuToCapture.style.height;
+            const originalOverflow = menuToCapture.style.overflowY;
 
-            const headerImage = document.createElement('img');
-            headerImage.src = 'assets/images/superior menu.jpeg';
-            headerImage.className = 'w-full mb-4 block mx-auto';
-            menuToCapture.prepend(headerImage);
+            // Aplicar estilos para la captura
+            menuToCapture.style.width = '1200px';
+            menuToCapture.style.height = 'auto';
+            menuToCapture.style.overflowY = 'visible';
 
             const unavailableItems = menuToCapture.querySelectorAll('.unavailable');
             unavailableItems.forEach(item => {
@@ -50,26 +53,24 @@ document.addEventListener('DOMContentLoaded', () => {
             html2canvas(menuToCapture, {
                 width: 1200,
                 scale: 1,
-                backgroundColor: null
+                backgroundColor: null,
+                windowHeight: menuToCapture.scrollHeight
             }).then(capturedCanvas => {
+                // Restaurar estilos originales
                 menuToCapture.style.width = originalWidth;
+                menuToCapture.style.height = originalHeight;
+                menuToCapture.style.overflowY = originalOverflow;
                 unavailableItems.forEach(item => {
                     item.style.display = 'flex';
                 });
-                headerImage.remove();
 
+                // Crear canvas final con la altura del contenido
                 const finalCanvas = document.createElement('canvas');
                 finalCanvas.width = 1200;
-                finalCanvas.height = 1200;
+                finalCanvas.height = capturedCanvas.height;
                 const ctx = finalCanvas.getContext('2d');
 
-                ctx.fillStyle = '#FFFFFF';
-                ctx.fillRect(0, 0, 1200, 1200);
-
-                const x = (1200 - capturedCanvas.width) / 2;
-                const y = (1200 - capturedCanvas.height) / 2;
-
-                ctx.drawImage(capturedCanvas, x, y);
+                ctx.drawImage(capturedCanvas, 0, 0);
 
                 const link = document.createElement('a');
                 link.download = 'menu-disponible-comidas-paty.png';
