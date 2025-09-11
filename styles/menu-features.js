@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             html2canvas(menuToCapture, {
-                scale: 2,
+                width: 1200,
+                height: 1200,
                 backgroundColor: null
             }).then(canvas => {
                 editButton.style.display = originalDisplay;
