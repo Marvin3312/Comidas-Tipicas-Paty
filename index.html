@@ -35,10 +35,11 @@
             background-color: var(--paty-bg);
             color: var(--paty-text);
         }
-        .list-group-item {
+        .menu-items > .antojito-item {
             background-color: transparent;
-            border: none;
             padding: 0.5rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 5px;
         }
         .price-badge {
             background-color: var(--paty-primary);
@@ -49,6 +50,19 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        @media (max-width: 768px) {
+            .antojito-item {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+            .antojito-item span[contenteditable] {
+                margin-bottom: 0.5rem;
+            }
+            .display-4 {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-paty-dark-bg text-white font-sans">
@@ -56,7 +70,7 @@
         <source src="assets/music/Marimba Maderas Chapinas - El Rey Quiche - Difosa Music.mp3" type="audio/mpeg">
     </audio>
 
-    <header class="bg-paty-secondary shadow-lg sticky-top" style="background-color: var(--paty-secondary);">
+    <header class="bg-paty-secondary shadow-lg sticky-top">
         <div class="container d-flex justify-content-between align-items-center px-4 py-3">
             <div class="d-flex align-items-center">
                 <img src="assets/images/logo.jpg" alt="Logo Comidas Tipicas Paty" style="height: 50px;" class="me-3">
@@ -76,9 +90,9 @@
             <section id="menu">
                 <div id="menu-capture-area" class="bg-guatemala-textile p-4 shadow-lg rounded">
                     <div class="p-4 rounded" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <center>
                         <img src="assets/images/superior menu.jpeg" alt="Menu Superior" class="img-fluid mb-4">
-                        <h2 class="h2 fw-bold text-center mb-4" style="font-family: 'Brush Script MT', cursive; color: var(--paty-primary);">COMIDAS TIPICAS PATY</h2>
-                        
+                        </center>                        
                         <div class="accordion" id="menuAccordion">
                             <!-- Antojitos -->
                             <div class="accordion-item">
@@ -89,19 +103,48 @@
                                 </h2>
                                 <div id="collapseAntojitos" class="accordion-collapse collapse show" aria-labelledby="headingAntojitos" data-bs-parent="#menuAccordion">
                                     <div class="accordion-body">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">01. DOBLADAS DE POLLO <span class="badge price-badge rounded-pill">Q15.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center"> &nbsp; &nbsp; &nbsp; DOBLADAS AL PASTOR (CARNE ADOBADA Y QUESILLO) <span class="badge price-badge rounded-pill">Q20.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">02. TORTILLA DE HARINA DE CERDO <span class="badge price-badge rounded-pill">Q20.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">03. ENCHILADAS <span class="badge price-badge rounded-pill">Q10.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">04. PANES CON CARNE <span class="badge price-badge rounded-pill">Q15.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">05. HAMBURGUESAS DE RES <span class="badge price-badge rounded-pill">Q15.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">06. HOT DOG CON TOCINO Y CEBOLLA CARAMELIZADA <span class="badge price-badge rounded-pill">Q15.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">07. TACOS DORADOS DE PAPA (3) <span class="badge price-badge rounded-pill">Q10.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">08. TAYUYOS (CARNE, REQUESON CON LOROCO, CHICHARRON) <span class="badge price-badge rounded-pill">Q5.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">09. LICUADOS DE FRUTAS <span class="badge price-badge rounded-pill">Q10.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center"> &nbsp; &nbsp; &nbsp; LICUADOS CON LECHE <span class="badge price-badge rounded-pill">Q12.00</span></li>
-                                        </ul>
+                                        <div class="menu-items">
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">01. DOBLADAS DE POLLO</span>
+                                                <span class="badge price-badge rounded-pill">Q15.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">DOBLADAS AL PASTOR (CARNE ADOBADA Y QUESILLO)</span>
+                                                <span class="badge price-badge rounded-pill">Q20.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">02. TORTILLA DE HARINA DE CERDO</span>
+                                                <span class="badge price-badge rounded-pill">Q20.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">03. PANES CON CARNE</span>
+                                                <span class="badge price-badge rounded-pill">Q15.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">04. HAMBURGUESAS DE RES</span>
+                                                <span class="badge price-badge rounded-pill">Q15.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">05. HOT DOG CON TOCINO Y CEBOLLA CARAMELIZADA</span>
+                                                <span class="badge price-badge rounded-pill">Q15.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">06. TACOS DORADOS DE PAPA (3)</span>
+                                                <span class="badge price-badge rounded-pill">Q10.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">07. TAYUYOS (CARNE, REQUESON CON LOROCO, CHICHARRON)</span>
+                                                <span class="badge price-badge rounded-pill">Q5.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">08. LICUADOS DE FRUTAS</span>
+                                                <span class="badge price-badge rounded-pill">Q10.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                <span contenteditable="true">LICUADOS CON LECHE</span>
+                                                <span class="badge price-badge rounded-pill">Q12.00</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -114,22 +157,31 @@
                                 </h2>
                                 <div id="collapseAlmuerzos" class="accordion-collapse collapse" aria-labelledby="headingAlmuerzos" data-bs-parent="#menuAccordion">
                                     <div class="accordion-body">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">COSTILLAS ASADAS <span class="badge price-badge rounded-pill">Q150.00</span></li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">ESPAGUETI <span class="badge price-badge rounded-pill">Q20.00</span></li>
-                                        </ul>
+                                        <div class="menu-items">
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                COSTILLAS ASADAS
+                                                <span class="badge price-badge rounded-pill">Q150.00</span>
+                                            </div>
+                                            <div class="antojito-item d-flex justify-content-between align-items-center">
+                                                ESPAGUETI
+                                                <span class="badge price-badge rounded-pill">Q20.00</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="text-center mt-4 pt-4 border-top border-2 border-dashed" style="border-color: var(--paty-text); color: black; font-weight: bold;">
                             <p class="h5 mb-2">Visítanos en el local ubicado en colonia asuncion o llamanos al</p>
-                            <p class="h5 fw-bold" style="color: var(--paty-secondary);">42375353 Y 42374838</p>
+                            <p class="h5 fw-bold" style="color:black;">42375353 Y 42374838</p>
                             <p class="h5">y te lo llevamos a tu casa</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="text-center mt-4">
+                     <button id="edit-menu-btn" class="btn btn-lg rounded-pill" style="background-color: var(--paty-accent); color: white;">Editar Menú</button>
                      <button id="save-menu-image-btn" class="btn btn-lg rounded-pill" style="background-color: var(--paty-highlight); color: white;">Guardar Menú como Imagen</button>
                 </div>
             </section>
